@@ -1,0 +1,232 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background: #000;
+  position: relative;
+}
+
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.robux-icons {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 100px,
+    rgba(100, 151, 177, 0.03) 100px,
+    rgba(100, 151, 177, 0.03) 200px
+  );
+}
+
+.robux-icons::before {
+  content: "₹";
+  position: absolute;
+  font-size: 48px;
+  color: rgba(100, 151, 177, 0.1);
+  animation: float 6s ease-in-out infinite;
+}
+
+.gradient-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #6497b1 0%, transparent 40%, #000 100%);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  gap: 2rem;
+}
+
+.title {
+  font-size: 3rem;
+  color: #fff;
+  text-shadow: 0 0 20px rgba(100, 151, 177, 0.5);
+  animation: slideDown 0.8s ease-out;
+  text-align: center;
+}
+
+.btn-example {
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #ff006e, #ff3b9a);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(255, 0, 110, 0.4);
+  animation: slideUp 0.8s ease-out;
+}
+
+.btn-example:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 30px rgba(255, 0, 110, 0.6);
+}
+
+.btn-example:active {
+  transform: translateY(-1px);
+}
+
+.iframe-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.4s ease-out;
+}
+
+.iframe-container.hidden {
+  display: none;
+  animation: fadeOut 0.4s ease-out;
+}
+
+.iframe-container iframe {
+  width: 90%;
+  height: 90%;
+  max-width: 1200px;
+  max-height: 800px;
+  border-radius: 12px;
+  animation: slideUp 0.5s ease-out;
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  font-size: 2rem;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 101;
+}
+
+.close-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Animations */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  25% {
+    transform: translateY(-20px) translateX(10px);
+  }
+  50% {
+    transform: translateY(-40px) translateX(-10px);
+  }
+  75% {
+    transform: translateY(-20px) translateX(15px);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .title {
+    font-size: 2rem;
+  }
+
+  .btn-example {
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+  }
+
+  .iframe-container iframe {
+    width: 95%;
+    height: 95%;
+  }
+
+  .close-btn {
+    width: 45px;
+    height: 45px;
+    font-size: 1.8rem;
+  }
+}
